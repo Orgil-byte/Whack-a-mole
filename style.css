@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100vh;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("assets/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #d05d28;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#startGame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 3rem;
+  width: 90%;
+  max-width: 1000px;
+  height: auto;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 40px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5),
+    -10px -10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.intro {
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+#startButton {
+  padding: 20px 40px;
+  font-size: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #388850;
+  color: white;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gameBoard {
+  width: 95%;
+  max-width: 1080px;
+  height: auto;
+  min-height: 600px;
+  padding: 40px;
+  background-color: rgb(170, 208, 136);
+  border-radius: 40px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5),
+    -10px -10px 30px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+}
+
+.gameStats {
+  font-weight: bold;
+  font-size: 48px;
+  width: 100%;
+  height: auto;
+  padding: 0 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 130px;
+}
+.hole {
+  width: 160px;
+  height: 60px;
+  background-color: #388850;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+.hole .mole {
+  width: 100px;
+  height: 105px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 0.3s;
+  bottom: 10px;
+  animation: rise 0.3s ease-out;
+}
+@keyframes rise {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 10px;
+  }
+}
+.cursor {
+  width: 100px;
+  height: 110px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  background-image: url("assets/hammer.png");
+  background-size: 100% 100%;
+  transform: translate(-20%, -20%);
+  transition: 0.1s ease;
+  pointer-events: none;
+  display: none;
+}
+.cursor:active {
+  transform: translate(-20%, -20%) rotate(-45deg);
+}
+#gameOver {
+  font-size: 4em;
+  display: none;
+}

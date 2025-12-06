@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whack a mole</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="startGame">
+      <p class="intro">
+        Ready, Set, <strong>WHACK!</strong><br />
+        Your goal is simple: hit as many moles as possible in 1 minute. Click to
+        score 10 points per hit. How high can you score?
+      </p>
+      <button id="startButton">Start Game</button>
+    </div>
+    <h1 id="gameOver">sjxbcwecbuew</h1>
+    <div class="gameBoard">
+      <div class="gameStats">
+        <p class="score">SCORE: <span id="score">0</span></p>
+        <p class="timer">TIME: <span id="timer" type="number"></span></p>
+      </div>
+      <div class="board">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+      </div>
+    </div>
+    <div class="cursor"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
