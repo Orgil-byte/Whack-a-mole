@@ -19,6 +19,7 @@ body {
   align-items: center;
   overflow: hidden;
   position: relative;
+  cursor: none;
 }
 
 #startGame {
@@ -39,6 +40,10 @@ body {
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5),
     -10px -10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
+}
+
+#startGame:hover {
+  cursor: default;
 }
 
 .intro {
@@ -97,7 +102,6 @@ body {
   height: 60px;
   background-color: #388850;
   border-radius: 50%;
-  cursor: pointer;
   position: relative;
 }
 .hole .mole {
@@ -109,6 +113,7 @@ body {
   transition: bottom 0.3s;
   bottom: 10px;
   animation: rise 0.3s ease-out;
+  cursor: none;
 }
 @keyframes rise {
   from {
@@ -122,8 +127,6 @@ body {
   width: 100px;
   height: 110px;
   position: absolute;
-  top: 100px;
-  left: 100px;
   background-image: url("assets/hammer.png");
   background-size: 100% 100%;
   transform: translate(-20%, -20%);
@@ -131,10 +134,15 @@ body {
   pointer-events: none;
   display: none;
 }
-.cursor:active {
+.cursor.active {
   transform: translate(-20%, -20%) rotate(-45deg);
 }
+
 #gameOver {
   font-size: 4em;
   display: none;
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+  text-align: center;
+  margin-bottom: 20px;
 }
