@@ -6,13 +6,16 @@ const startButton = document.getElementById("startButton");
 const gameBoard = document.querySelector(".gameBoard");
 const timerBoard = document.getElementById("timer");
 const gameOverText = document.getElementById("gameOver");
+const intro = document.getElementById("intro");
 
 let score = 0;
 let timeLeft;
 let gameTimerId;
 let moleTimeoutId;
 let isGameRunning = false;
-const gameDuration = 10;
+const gameDuration = 60;
+
+intro.textContent = `Welcome to Whack-a-Mole! Click on the moles as they pop up to score points. You have ${gameDuration} seconds to get the highest score possible. Good luck!`;
 
 const soundHit = new Audio("assets/smash.mp3");
 
@@ -75,15 +78,32 @@ function run() {
   });
 
   hole.appendChild(img);
-
-  moleTimeoutId = setTimeout(() => {
-    if (hole.contains(img)) {
-      hole.removeChild(img);
-    }
-    if (isGameRunning) {
-      run();
-    }
-  }, 1500);
+  if (score < 100) {
+    moleTimeoutId = setTimeout(() => {
+      if (hole.contains(img)) {
+        hole.removeChild(img);
+      }
+      if (isGameRunning) {
+        run();
+      }
+    }, 1500);
+  }
+  if (score >= 100 && score < 200) {
+    moleTimeoutId = setTimeout(() => {
+      if (hole.contains(img)) {
+        hole.removeChild(img);
+      }
+    }, 1000);
+    setTimeout(run, 500);
+  }
+  if (score >= 200) {
+    moleTimeoutId = setTimeout(() => {
+      if (hole.contains(img)) {
+        hole.removeChild(img);
+      }
+    }, 800);
+    setTimeout(run, 400);
+  }
 }
 
 function endGame() {
@@ -92,8 +112,15 @@ function endGame() {
   clearTimeout(moleTimeoutId);
 
   holes.forEach((hole) => (hole.innerHTML = ""));
-
-  gameOverText.textContent = `Game Over! Your final score is: ${score}`;
+  if (score < 100) {
+    gameOverText.textContent = `Good try! You scored ${score} points. Keep practicing to improve your skills!`;
+  }
+  if (score >= 100 && score < 300) {
+    gameOverText.textContent = `Well done! You scored ${score} points. You're getting the hang of it!`;
+  }
+  if (score >= 300) {
+    gameOverText.textContent = `Amazing! You scored ${score} points. You're a Whack a Mole master!`;
+  }
   gameOverText.style.display = "block";
   startGameDiv.style.display = "flex";
   gameBoard.style.display = "none";
